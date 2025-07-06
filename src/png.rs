@@ -46,12 +46,9 @@ impl Png {
     }
 
     pub fn chunk_by_type(&self, chunk_type: &str) -> Option<&Chunk> {
-        for chunk in self.chunks() {
-            if chunk.chunk_type().to_string().eq(chunk_type) {
-                return Some(chunk);
-            }
-        }
-        None
+        self.chunks()
+            .iter()
+            .find(|c| c.chunk_type().to_string().eq(chunk_type))
     }
 
     pub fn as_bytes(&self) -> Vec<u8> {
