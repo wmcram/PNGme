@@ -17,22 +17,22 @@ pub enum PngMeArgs {
 
 #[derive(Args)]
 pub struct EncodeArgs {
-    filename: PathBuf,
-    chunk_type: String,
-    message: String,
-    output_filename: Option<PathBuf>,
+    pub filename: PathBuf,
+    pub chunk_type: String,
+    pub message: String,
+    pub output_filename: Option<PathBuf>,
 }
 #[derive(Args)]
 pub struct DecodeArgs {
-    filename: PathBuf,
-    chunk_type: String,
+    pub filename: PathBuf,
+    pub chunk_type: String,
 }
 #[derive(Args)]
 pub struct RemoveArgs {
-    filename: PathBuf,
-    chunk_type: String,
+    pub filename: PathBuf,
+    pub chunk_type: String,
 }
 #[derive(Args)]
 pub struct PrintArgs {
-    filename: PathBuf,
+    pub filename: PathBuf,
 }

@@ -9,26 +9,15 @@ pub type Result<T> = std::result::Result<T, Error>;
 
 use args::{Cli, PngMeArgs};
 use clap::Parser;
+use commands::*;
 
 fn main() -> Result<()> {
     let cli = crate::Cli::parse();
 
-    match &cli.command {
-        PngMeArgs::Encode(args) => {
-            println!("Encode");
-            Ok(())
-        }
-        PngMeArgs::Decode(args) => {
-            println!("Decode");
-            Ok(())
-        }
-        PngMeArgs::Remove(args) => {
-            println!("Remove");
-            Ok(())
-        }
-        PngMeArgs::Print(args) => {
-            println!("Print");
-            Ok(())
-        }
+    match cli.command {
+        PngMeArgs::Encode(args) => encode(args),
+        PngMeArgs::Decode(args) => decode(args),
+        PngMeArgs::Remove(args) => remove(args),
+        PngMeArgs::Print(args) => print_chunks(args),
     }
 }
