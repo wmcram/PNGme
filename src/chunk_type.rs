@@ -4,7 +4,7 @@ use std::str;
 
 use crate::{Error, Result};
 
-#[derive(Debug, Eq, PartialEq)]
+#[derive(Debug, Eq, PartialEq, Clone)]
 pub struct ChunkType([u8; 4]);
 
 impl TryFrom<[u8; 4]> for ChunkType {
