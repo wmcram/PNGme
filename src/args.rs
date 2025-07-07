@@ -13,6 +13,7 @@ pub enum PngMeArgs {
     Decode(DecodeArgs),
     Remove(RemoveArgs),
     Print(PrintArgs),
+    Get(GetArgs),
 }
 
 #[derive(Args)]
@@ -34,5 +35,10 @@ pub struct RemoveArgs {
 }
 #[derive(Args)]
 pub struct PrintArgs {
+    pub filename: PathBuf,
+}
+#[derive(Args)]
+pub struct GetArgs {
+    pub url: String,
     pub filename: PathBuf,
 }

@@ -1,13 +1,11 @@
-use std::convert::TryFrom;
 use std::fs;
-use std::io::Write;
 use std::str::FromStr;
 
-use crate::args::{DecodeArgs, EncodeArgs, PrintArgs, RemoveArgs};
+use crate::Result;
+use crate::args::*;
 use crate::chunk::Chunk;
 use crate::chunk_type::ChunkType;
 use crate::png::Png;
-use crate::{Error, Result};
 
 /// Encodes a message into a PNG file and saves the result
 pub fn encode(args: EncodeArgs) -> Result<()> {
@@ -52,5 +50,12 @@ pub fn print_chunks(args: PrintArgs) -> Result<()> {
     for chunk in png.chunks() {
         println!("{}", chunk);
     }
+    Ok(())
+}
+
+// Downloads a png from the internet
+pub fn get_png(args: GetArgs) -> Result<()> {
+    let png = Png::from_url(&args.url)?;
+    fs::write(&args.filename, png.as_bytes())?;
     Ok(())
 }

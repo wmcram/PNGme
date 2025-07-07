@@ -19,5 +19,6 @@ fn main() -> Result<()> {
         PngMeArgs::Decode(args) => decode(args),
         PngMeArgs::Remove(args) => remove(args),
         PngMeArgs::Print(args) => print_chunks(args),
+        PngMeArgs::Get(args) => get_png(args),
     }
 }

@@ -22,6 +22,11 @@ impl Png {
         Png::try_from(buf.as_slice())
     }
 
+    pub fn from_url(url: &str) -> Result<Self> {
+        let bytes = reqwest::blocking::get(url)?.bytes()?.to_vec();
+        Png::try_from(bytes.as_slice())
+    }
+
     pub fn append_chunk(&mut self, chunk: Chunk) {
         self.0.push(chunk);
     }
