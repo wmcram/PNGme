@@ -35,10 +35,10 @@ pub fn remove(args: RemoveArgs) -> Result<()> {
     match png.remove_first_chunk(&args.chunk_type) {
         Ok(chunk) => {
             fs::write(&args.filename, png.as_bytes())?;
-            println!("Removed chunk {}", chunk)
+            println!("Removed chunk {chunk}")
         }
         Err(e) => {
-            println!("Error: {}", e);
+            println!("Error: {e}");
         }
     }
     Ok(())
@@ -48,7 +48,7 @@ pub fn remove(args: RemoveArgs) -> Result<()> {
 pub fn print_chunks(args: PrintArgs) -> Result<()> {
     let png = Png::from_file(args.filename)?;
     for chunk in png.chunks() {
-        println!("{}", chunk);
+        println!("{chunk}");
     }
     Ok(())
 }

@@ -20,8 +20,8 @@ impl Chunk {
         let checksum = checksummer.checksum(&data_to_sum);
         Chunk {
             length: data.len() as u32,
-            chunk_type: chunk_type,
-            data: data,
+            chunk_type,
+            data,
             crc: checksum,
         }
     }
